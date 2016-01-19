@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Ví dụ sử dụng ngClass trong AngularJS - Freetuts.net</title>
+    <script type="text/javascript" src="scripts/js/angular.js"></script>
+    <style>
+        *{margin:0;padding:0}
+        body{margin:20px;}
+        .red {
+            padding: 20px;
+            background-color: red;
+            color: #FFF;
+        }
+
+        .green{
+            padding: 20px;
+            background-color: green;
+            color:#FFF;
+        }
+        .border{
+            border:solid 1px blue;
+        }
+        .base-class {
+            -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+            transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        }
+
+        .base-class.my-class {
+            color: red;
+            font-size:3em;
+        }
+    </style>
+    <script>
+        /*
+         * Author: thehalfheart@gmail.com
+         * Website: freetuts.net
+         */
+        angular.module('ngClassExample', [])
+                .controller('ngControllerExample', function($scope){
+                    $scope.className = 'red border'; // Chi can khi su dung cho ng-class=className
+                });
+    </script>
+</head>
+<body ng-app="ngClassExample">
+<div ng-controller="ngControllerExample">
+    <p ng-class="className">Học angularjs miễn phí tại freetuts.net</p> <!--Su dung nhu class-->
+
+    <p ng-class="[border, color]">Nguyen Thien Thuat dep trai</p> <br/> <!--Su dung nhu ten cua scope-->
+    <input type="text" ng-model="color" placeholder="Nhập vào red hoặc green"/> Màu đỏ <br/><br/>
+    <input type="text" ng-model="border" placeholder="Nhập vào border"/> Có viền <br/>
+    <br><br>
+    <p ng-class="{red:scope_red, border:scope_border}">Học angularjs miễn phí tại freetuts.net</p> <br/>
+    <input type="checkbox" ng-model="scope_red"/> Màu đỏ <br/><br/>
+    <input type="checkbox" ng-model="scope_border"/> Có viền <br/>
+    <br><br>
+    <p class="base-class" ng-class="variable">Học angularjs miễn phí tại freetuts.net</p> <br/>
+    <input type="button" value="Animate" ng-click="variable = 'my-class'"/>
+    <input type="button" value="Not Animate" ng-click="variable = ''"/>
+</div>
+</div>
+</body>
+</html>
