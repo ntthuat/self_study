@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body ng-app="app">
+
+	<div ng-controller="demoController">
+		chuoi goc: {{chuoi1}} <br>
+		chuoi sau khi thay n bang * quy tac 1: {{chuoi1a}} <br>
+		chuoi sau khi thay n bang * quy tac 2: {{chuoi1b}} <br>
+		chuoi sau khi thay n bang * quy tac 3: {{chuoi1c}} <br>
+		chuoi sau khi thay n bang * quy tac 4: {{chuoi1d}} <br>
+		<br>
+		<p>
+		quy tac 1: "/quy tac/" bieu thuc co phan biet chu hoa va chu thuong, va chi ap dung cho chuoi dau tien tim duoc <br>
+		quy tac 2: "/quy tac/g" bieu thuc co phan biet chu hoa va chu thuong, ap dung cho tat cac chuoi tim duoc <br>
+		quy tac 3: "/quy tac/i" bieu thuc khong phan biet chu hoa va chu thuong, ap dung cho chuoi dau tien tim thay duoc<br>
+		quy tac 4: "/quy tac/gi" bieu thuc khong phan biet chu hoa va chu thuong, ap dung cho tat ca chuoi tim duoc </p>
+		<h1 style="color:red;">Quy tac ve vi tri:</h1>
+		chuoi goc: {{chuoi2}} <br>
+		chuoi ap dung quy tac 1 ve vi tri: {{chuoi2a}} <br>
+		chuoi ap dung quy tac 2 ve vi tri: {{chuoi2b}} <br>
+		<p>
+		"^" nghia la bat dau mot chuoi <br>
+		"$" nghia la ket thuc mo chuoi <br>
+		"\b" nghia la diem giua mot ky tu la tu va mot ky tu khong la tu, ky tu la tu: A-z, 0-9 <br>
+		"\B" nguoc lai voi "\b", nghia la o giua 2 ky tu deu la tu het 
+		</p>
+		<h1 style="color:red;">Quy tac ve nhung ky tu metasymbol</h1>
+		chuoi goc: {{chuoi3}} <br>
+		chuoi ap dung quy tac 1 metasymbol: {{chuoi3a}} <br>
+		<p>
+		"\d" dai dien cho mot ky tu so tu 0-9, tuong duong voi cach viet [0-9] <br>
+		"\D" nguoc lai voi "\d" <br>
+		"\s" dai dien cho mot ky tu la khoang trang <br>
+		"\S" nguoc lai voi "\s" <br>
+		"\w" dai dien cho mot ky tu tu A-Z hoac tu a-z hoac 0-9 va ky tu "_" <br>
+		"\W" nguoc lai voi "\w"
+		</p>
+		<h1 style="color:red;">Quy tac ve so luong ky tu</h1>
+		chuoi goc: {{chuoi4}} <br>
+		"x?" nghia la mot ky tu x hoac khong co ky tu nao: chuoi4a = chuoi4.replace(/go?d/gi, '*') <br>
+		chuoi 4a: {{chuoi4a}} <br>
+		"x*" nghia la mot hoac nhieu ky tu x hoac khong co ky tu nao <br>
+		"x+" nghia la co it nhat mot ky tu x <br>
+		"x{n}" nghia la ky tu x lap lai n lan <br>
+		"x{n,}" nghia la ky tu x lap lai it nhat n lan <br>
+		"x{n,m}" nghia la ky tu x lap lai tu n toi m lan <br>
+		var str = 'good night, godgad, gd, gooogle'; <br>
+		var str6 = str.replace(/go?d/gi, '*');  <br>
+		// str6: good night, *gad, *, gooogle  <br>
+		var str7 = str.replace(/g(oo)?d/gi, '*');  <br>
+		// str7: * night, godgad, *, gooogle  <br>
+		var str8 = str.replace(/go*d/gi, '*');  <br>
+		// str8: * night, *gad, *, gooogle  <br>
+		var str9 = str.replace(/go+/gi, '*');  <br>
+		// str9: *d night, *dgad, gd, *gle  <br>
+		var str10 = str.replace(/o{2}/gi, '*');  <br>
+		// str10: g*d night, godgad, gd, gooogle  <br>
+		var str11 = str.replace(/o{2,}/gi, '*');  <br>
+		// str11: g*d night, godgad, gd, g*gle  <br>
+		var str12 = str.replace(/go{1,3}d/gi, '*');  <br>
+		// str12: *d night, *dgad, gd, gooogle  <br>
+		<h1 style="color:red;">Quy tac ve danh sach ky tu</h1>
+		<p>
+		"[...]" trong dau ngoac vuong liet ke danh sach nhung ky tu hop quy tac, co the dung dau "-"
+		giua 2 ky tu de the hien danh sach nhung ky tu trong khoang 2 ky tu theo vi tri ASCII <br>
+		"[^...]" nguoc lai voi "[...]", thay vi liet ke nhung ky tu hop quy tac, no cho biet ky tu khong hop quy tac <br>
+		vi du: <br>
+		var str ='ABCDEF, abcdef, 12345'; <br>
+		var str13 = str.replace(/[Ab1]/g, '*'); <br>
+		// str13: *BCDEF, a*cdef, *2345
+		var str14 = str.replace(/[A-Cd-f1-35]/g, '*'); <br>
+		// str14: ***DEF, abc***, ***4* <br>
+		var str15 = str.replace(/[^A-f4-5]/g, '*'); <br>
+		// str15: ABCDEF**abcdef*****45 <br>
+		</p>
+		Link tham khao: <a href="http://expressmagazine.net/development/1849/bieu-thuc-quy-tac-trong-javascript-regular-expression" target="_blank">
+						http://expressmagazine.net/development/1849/bieu-thuc-quy-tac-trong-javascript-regular-expression
+						</a>
+	</div>
+
+	<script type="text/javascript">
+		var app = angular.module('app', []);
+
+		app.controller("demoController", function($scope) {
+			$scope.chuoi1 = "Xin chao!, toi la Nguyen Thien Thuat";
+			$scope.chuoi1a = $scope.chuoi1.replace(/n/, '*');
+			$scope.chuoi1b = $scope.chuoi1.replace(/n/g, '*');
+			$scope.chuoi1c = $scope.chuoi1.replace(/n/i, '*');
+			$scope.chuoi1d = $scope.chuoi1.replace(/n/gi, '*');
+			
+			$scope.chuoi2 = "Nguyen Thien Thuat manh me 1n2";
+			$scope.chuoi2a = $scope.chuoi2.replace(/n\b/gi, '*');
+			$scope.chuoi2b = $scope.chuoi2.replace(/n\B/gi, '*');
+			
+			$scope.chuoi3 = "Nguyen Thien Thuat ) \" Tran 123 Thi Hien";
+			$scope.chuoi3a = $scope.chuoi3.replace(/\W+\d/gi, '*');
+			
+			$scope.chuoi4 = 'good night, godgad, gd, gooogle';
+			$scope.chuoi4a = $scope.chuoi4.replace(/go?d/gi, '*');
+		});
+	</script>
+</body>
+</html>
+
+
