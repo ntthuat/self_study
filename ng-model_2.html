@@ -1,0 +1,79 @@
+
+<html lang="en-US" ng-app="App">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="scripts/js/angular.js"></script>
+<title>Users</title>
+<style type="text/css">
+.my-input {
+	-webkit-transition: all linear 0.5s;
+	/* -moz-transition de ho tro cho firefox
+	-webkit-transition de ho tro cho chrome va safari
+	-o-transition de ho tro cho opera */
+	transition: all linear 0.5s;
+	background: transparent;
+}
+
+.my-input.ng-invalid {
+	color: white;
+	background: red;
+}
+</style>
+</head>
+<body ng-controller="UsersCtrl">
+	<form name="calForm">
+            <h2>{{message.title}}</h2>
+            <h5>{{message.num1}}:</h5>
+            <input ng-model="so_thu_nhat" ng-required='true' ng-pattern="/^[0-9]+$/" class="my-input" ng-keyup="show_result()" />
+            <h5>{{message.num2}}:</h5>
+            <input ng-model="so_thu_hai" ng-required='true' ng-pattern="/^[0-9]+$/" class="my-input" ng-keyup="show_result()" />
+            <div style='{{styleresult}}'>
+                {{message.phep_cong}} {{result.phep_cong}}<br/>
+                {{message.phep_tru}}  {{result.phep_tru}}<br/>
+                {{message.phep_nhan}} {{result.phep_nhan}}<br/>
+                {{message.phep_chia}} {{result.phep_chia}}
+            </div>
+        </form>
+
+	<script>
+		angular.module('App', []).controller('UsersCtrl', function($scope) {
+			// Khởi tạo giá trị ban đầu
+            $scope.message = {
+                title: 'Trò Chơi Tính Toán',
+                num1: 'Số thứ nhất',
+                num2: 'Số thứ Hai',
+                phep_cong: "Cộng hai số:",
+                phep_tru: "Trừ hai số:",
+                phep_nhan: "Nhân hai số:",
+                phep_chia: "Chia hai số:"
+            };
+            $scope.styleresult = 'display:none';
+            /* _ Thuộc tính display: block; : Thành phần hiển thị như một khối,
+            khi sử dụng giá trị block thành phần sẽ đứng một hàng độc lập
+            so với thành phần trước và sau nó.
+            _ Thuộc tính display: inline; : Thành phần sẽ hiển thị như một nội tuyến 
+            (inline, không ngắt dòng), đây là dạng mặc định.
+            _ Thuộc tính display: none; : Thành phần không hiển thị. */
+
+            // Khi nhập các số vào các input thì gọi sự kiện này
+            $scope.show_result = function()
+            {
+                // Nếu validate form đúng
+                if ($scope.calForm.$valid) {
+                    $scope.styleresult = 'display:block';
+                    $scope.result = {
+                        phep_cong: parseInt($scope.so_thu_nhat) + parseInt($scope.so_thu_hai),
+                        phep_tru: parseInt($scope.so_thu_nhat) - parseInt($scope.so_thu_hai),
+                        phep_nhan: parseInt($scope.so_thu_nhat) * parseInt($scope.so_thu_hai),
+                        phep_chia: parseInt($scope.so_thu_nhat) / parseInt($scope.so_thu_hai)
+                    };
+                }
+                // nếu validate form sai thì ẩn result
+                else {
+                    $scope.styleresult = 'display:block';
+                }
+            };
+		});
+	</script>
+</body>
+</html>
