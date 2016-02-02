@@ -1,0 +1,38 @@
+
+<html lang="en-US" ng-app="App">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="scripts/js/angular.js"></script>
+<title>Users</title>
+<style type="text/css">
+.my-input {
+	-webkit-transition: all linear 0.5s; 
+	/* -moz-transition de ho tro cho firefox
+	-webkit-transition de ho tro cho chrome va safari
+	-o-transition de ho tro cho opera */
+	transition: all linear 0.5s;
+	background: transparent;
+}
+
+.my-input.ng-invalid {
+	color: white;
+	background: red;
+}
+</style>
+</head>
+<body ng-controller="UsersCtrl">
+	<form name="testForm">
+		<input ng-model="val" ng-pattern="/^\d+$/" name="anim"
+			class="my-input" />
+		<input ng-model="val2" required name="anim" class="my-input" />
+		<input ng-model="val3" ng-required='true' name="anim" class="my-input" />
+	</form>
+	
+	<script>
+		angular.module('App', []).controller('UsersCtrl',
+				function($scope) {
+
+				});
+	</script>
+</body>
+</html>
