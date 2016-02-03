@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+<style type="text/css">
+.ng-invalid{
+	color:red;
+}
+form.invalid{color:red}
+</style>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<form name="myForm">
+            Chon tuan trogn nam 2014<br/>
+            <input type="week" name="input" ng-model="value"
+                   min="2014-W32" max="2014-W52" required />
+            <br/>
+            <tt>value = {{value | date: "Www-yyyy"}}</tt><br/>
+            <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
+            <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
+            <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+            <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+        </form>
+		
+	</div>
+	
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 $scope.value = new Date();
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
