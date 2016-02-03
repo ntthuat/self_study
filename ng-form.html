@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+<style>
+* {
+	margin: 0
+}
+
+body {
+	padding: 20px
+}
+
+.my-form {
+	transition: all linear 0.5s;
+	background: transparent;
+}
+
+.my-form.ng-invalid {
+	background: red;
+}
+</style>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<form name="myForm" class="my-form">
+			Username: <input name="input" ng-model="username" required> <span class="error">Required!</span><br>
+			<tt>userType = {{username}}</tt>
+		</form>
+		<br><br>
+		<form name="myForm" class="my-form">
+            <input name="input1" ng-model="userType" required><br/>
+            <input name="input2" ng-model="userType2" required><br>
+            myForm.input1.$valid = {{myForm.input1.$valid}}<br>
+            myForm.input2.$valid = {{myForm.input2.$valid}}<br>
+            myForm.input.$error = {{myForm.input.$error}}<br>
+            myForm.$valid = {{myForm.$valid}}
+        </form>
+	</div>
+	
+<!-- 	Ngoai ra con co:
+	ng-valid neu form hop le.
+	ng-invalid neu form khong hop le.
+	ng-pristine neu form chua co thao tac nao
+	ng-dirty neu form da co thao tac
+	ng-submitted neu form da submit. -->
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 		
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
