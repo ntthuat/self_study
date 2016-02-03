@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<div ng-repeat="item in items">
+			<div ng-repeat="(key,value) in item">{{key}} - {{value}}</div>
+		</div>
+		<br>
+		<div ng-repeat="item in items">{{item.name}}</div>
+
+	</div>
+
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 $scope.items = [{
+                     "name":"Thien Thuat",
+                     "website":"freetuts.net"
+                 },
+                 {
+                     "name":"Hien Tran",
+                     "website":"freetutsssss.net"
+                 }
+			 ];
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
