@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+<style type="text/css">
+.ng-invalid{
+	color:red;
+}
+</style>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<H1>So thich cua ban la gi</H1>
+        <form name="myForm">
+            Choi game: <input type="checkbox" ng-model="game" 
+                              ng-true-value="'CÓ'" ng-false-value="'KHÔNG'"/> <br/>
+            Du lich: <input type="checkbox" ng-model="tour"
+                            ng-true-value="'CÓ'" ng-false-value="'KHÔNG'"/> <br/>
+            <h4>Ban dang chon</h4>
+            <tt>Choi game = {{game}}</tt><br/>
+            <tt>Du lich = {{tour}}</tt><br/>
+        </form>
+		
+	</div>
+	
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 $scope.game = 'KHÔNG';
+             $scope.tour = 'KHÔNG';
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
