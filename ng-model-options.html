@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<h5>Cach su dung ng-model-options updateon:</h5>
+		<input type="text" name="userName"
+			ng-model-options="{updateOn:'blur'}" ng-model="user.name" />
+		<h5>Chuoi ban nhap la:</h5>
+		<span ng-bind="user.name"></span> <br> {{user.name}} <br>
+
+		<h5>Cach su dung ng-model-options debounce</h5>
+		<input type="text" name="userName" ng-model-options="{debounce:1000}"
+			ng-model="user.name2" /> <br />
+		<h5>Chuoi ban nhap la:</h5>
+		<span ng-bind="user.name2"></span>
+
+		<h5>Cach su dung ng-model-options updateon ket hop debounce</h5>
+		<input type="text" name="userName"
+			ng-model-options="{updateOn:'blur', debounce:1000}"
+			ng-model="user.name3" /><br />
+		<h5>Chuoi ban nhap la:</h5>
+		<span ng-bind="user.name3"></span>
+
+		<h5>Cach su dung getterSetter</h5>
+		<input type="text" name="userName"
+			ng-model-options="{ getterSetter: true }" ng-model="user.name4" /><br />
+		<h5>Chuoi cua ban dang nhap la:</h5>
+		<span ng-bind="user.name4()"></span>
+	</div>
+
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 var _name = 'Freetuts.net';
+             $scope.user = {
+                 name4: function(newName) {
+                         return angular.isDefined(newName) ? (_name = newName) : _name;
+                     }
+                 };			
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
