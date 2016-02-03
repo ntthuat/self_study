@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+<style type="text/css">
+.ng-invalid{
+	color:red;
+}
+form.invalid{color:red}
+</style>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<form name="myForm">
+            Thoi gian nhan vien ra/vao: <br/>
+            <input type="time" name="input" ng-model="value"
+                   min="08:00:00" max="17:00:00" required /> <br/>
+            <tt>value = {{value | date: "HH:mm:ss"}}</tt><br/>
+            <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
+            <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
+            <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+            <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+        </form>
+		
+	</div>
+	
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 var date = new Date();
+             $scope.value = new Date(1970, 0, 1, date.getHours(), date.getMinutes(), date.getSeconds());
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
