@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+<style type="text/css">
+.ng-invalid{
+	color:red;
+}
+form.invalid{color:red}
+</style>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<form name="myForm">
+            <h2>Hoi dap: ban nam nay bao nhieu tuoi?</h2>
+            <input type="text" ng-model="your_age" ><br/>
+            <div>
+                <div ng-hide="checkAge()">
+                    Ban chua du tuoi de yeu
+                </div>
+                <div ng-show="checkAge()">
+                    Yeu di, e roi do
+                </div>
+            </div>
+        </form>
+		
+	</div>
+	
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 $scope.your_age = 20;
+             $scope.checkAge = function()
+             {
+                 if ($scope.your_age >= 20){
+                     return true;
+                 }
+                 return false;
+             };
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
