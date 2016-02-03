@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+<style>
+	*{margin:0;padding:0}
+	body{margin:50px}
+	footer, div.body,header{margin: 10px; }
+	footer{border:solid 1px red; background: red}
+	div.body{border:solid 1px blue; background: blue}
+	header{border:solid 1px pink; background: pink}
+</style>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<form name="myForm">
+            <header ng-repeat-start="item in items">
+                Header {{ item }}
+            </header>
+            <div class="body">
+                Body {{ item }}
+            </div>
+            <footer ng-repeat-end>
+                Footer {{ item }}
+            </footer>
+        </form>
+		
+	</div>
+	
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 $scope.items = ["Xin chao", 'Hello', "Freetuts.net"];
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
