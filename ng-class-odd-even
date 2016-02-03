@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+<style>
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	margin: 20px;
+}
+
+div {
+	height: 30px;
+	line-height: 30px;
+	padding: 0px 20px;
+}
+
+.odd {
+	background: red;
+	color: #FFF;
+}
+
+.even {
+	background: blue;
+	color: #FFF;
+}
+</style>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<h1>Freetuts.net - ng-class-odd</h1>
+        <div ng-repeat="student in students" ng-class-odd="'odd'" ng-class-even="'even'">
+            {{student.name}}
+        </div>
+	</div>
+
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			// Danh sách sinh viên
+             $scope.students = [
+                 {name : "Nguyen Thien Thuat"},
+                 {name : "Tran Thi Hien"},
+                 {name : "Nguyen Nhut Quang"},
+                 {name : "Nguyen Quan Hop"},
+                 {name : "Vo Hoang Son"},
+                 {name : "Nguyen Dai Duong"},
+                 {name : "Le Van Dao"},
+                 {name : "Nguyen Thai Chau"}
+             ];
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
