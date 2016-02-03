@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<h1>Freetuts.net - ng-click</h1>
+        <input type="button" value="Click Me" ng-click="TangBienCount()" /> <br/><br/>
+        <span>Ban da click {{count}} lan</span>
+        <input type="button" value="Click Me" ng-click="count = count + 1" /> <br/><br/>
+	</div>
+
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			// Gán giá trị khởi đầu cho count
+             $scope.count = 0;
+             
+             // Hàm tăng count lên 1 đơn vị
+             $scope.TangBienCount = function(){
+                 $scope.count++;
+             };
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
