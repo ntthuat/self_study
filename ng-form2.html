@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<form ng-submit="submit()">
+            Nhap ten sinh vien:
+            <input type="text" ng-model="text" name="text" />
+            <input type="submit" value="Them" /> <br/>
+            Danh sach sinh vien: <pre>list={{list}}</pre>
+        </form>
+		
+	</div>
+	
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 $scope.list = [];
+             
+             // Khi submit form thì chạy hàm này
+             $scope.submit = function() 
+             {
+                 // nếu người dùng có nhập nội dung thì lưu nó vào list
+                 if ($scope.text) 
+                 {
+                     $scope.list.push(this.text);
+                     
+                     // đồng thời xóa dữ liệu trong thẻ input
+                     $scope.text = '';
+                 }
+             };	
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
