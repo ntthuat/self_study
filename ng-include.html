@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<div ng-include=" 'template-a.html' "></div>
+        <div ng-include=" 'template-b.html' "></div>
+        <div ng-include=" 'js/template-c.html' "></div>
+	</div>
+
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 $scope.message = 'Chao mung ban den voi tui - Nguyen Thien Thuat';
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
