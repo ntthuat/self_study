@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broadcasting</title>
+<style type="text/css">
+.ng-invalid{
+	color:red;
+}
+</style>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="firstCtrl">
+	<div>
+
+		<h1>Dang nhap</h1>
+        <form name="myForm" ng-submit="login()">
+            User name: <br/>
+            <input type="text" name="userName" ng-pattern="/^([a-zA-Z0-9]+)$/"  ng-model="username" ng-trim="true" required ng-minlength="3" ng-maxlength="10" /> <br/>
+            Password: <br/>
+            <input type="password" name="userPass" ng-model="password" required ng-minlength="3" ng-maxlength="10" ng-trim="true"> <br/><br/>
+            <!-- ng-trim dung de xoa khoang trang dau va cuoi -->
+            <input type="submit" value='Login'/>
+            <input type="submit" value="loginTest"/>
+          </form>
+		
+	</div>
+	
+
+	<script>
+		 var app = angular.module('app', []);
+		 
+		 app.controller("firstCtrl", function ($scope) {
+			 $scope.list = [];
+             
+			 // Khi submit form thì chạy hàm này
+             $scope.login = function() 
+             {
+                 // nếu người dùng có nhập nội dung thì lưu nó vào list
+                 if ($scope.username == 'admin' && $scope.password == '123456'){
+                     alert('Dang nhap thanh cong');
+                 }
+                 else {
+                     alert('Dang nhap that bai');
+                 }
+             };
+		 });
+
+ 
+ 	</script>
+</body>
+</html>
